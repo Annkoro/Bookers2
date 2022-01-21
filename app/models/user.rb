@@ -6,7 +6,12 @@ class User < ApplicationRecord
 
   has_many :books, dependent: :destroy
 
-  has_one_attached :profile_image
+  attachment :profile_image
+
+validates :name, presence: true, length: {mininum: 2, maximum: 20 }
+validates :introduction, length: {maximum: 100 }
+
+
 
   def get_profile_image
     unless profile_image.attached?
