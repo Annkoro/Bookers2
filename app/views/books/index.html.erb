@@ -1,6 +1,8 @@
 <!--投稿一覧-->
-<!--サイドバー-->
 
+<!--サイドバー-->
+<%= render 'users/list', user: @user %>
+<%= render 'books/list', book: @book %>
 
 
 <!--投稿一覧-->
@@ -19,7 +21,7 @@
       <tr>
         <td>
           <%= link_to user_path(book.user.id) do %>
-            <%= attachment_image_tag book.user, :profile_image, fallback: 'no_image.jpg' %>
+            <%= image_tag book.user.get_profile_image('50x50'), fallback: 'no_image.jpg' %>
           <% end %>
         </td>
         <td><%= link_to book.title, book_path(book.id) %></td>

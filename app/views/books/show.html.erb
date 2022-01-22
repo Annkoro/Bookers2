@@ -1,7 +1,12 @@
+<!--投稿の詳細画面-->
+
+
 <%= notice %>
 
-<!--サイドバー-->
 
+<!--サイドバー-->
+<%- render 'users/list', user: @user %>
+<%= render 'books/list', book: @book %>
 
 
 <!--投稿詳細-->
@@ -11,12 +16,14 @@
     <tr>
       <td>
         <%= link_to user_path(@user) do %>
-          <%= attachment_image_tag @book.user, :profile_image, fallback: 'no_image.jpg' %>
+          <%= image_tag @book.user.get_profile_image('50x50'), fallback: 'no_image.jpg' %>
           <%= @user.name %>
         <%= end %>
       </td>
       <td><%= @book.title %></td>
       <td><%= @book.body %></td>
+      <td><%= link_to 'Edit', edit_book_path(@book.id) %></td>
+      <td><%= link_to 'Destroy', book_path(@book), method: :delete, 'data-confirm' => "本当に消しますか？" %></td>
     </tr>
   </tbody>
 </table>

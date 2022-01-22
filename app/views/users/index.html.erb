@@ -12,6 +12,8 @@
 <% end %>
 
 <!--サイドバーUserinfoとNewbook-->
+<%= render 'users/list', user: @user %>
+<%= render 'books/list', book: @book %>
 
 
 
@@ -29,9 +31,10 @@
     <% @users.each do |user| %>
       <tr>
         <td>
-          <%= attachment_image_tag user, :profile_image, fallback: 'no_image.jpg' %>
+          <%= image_tag user.get_profile_image('50x50'), fallback: 'no_image.jpg' %>
         </td>
         <td><%= user.name %></td>
       </tr>
+    <% end %>
   </tbody>
 </table>
