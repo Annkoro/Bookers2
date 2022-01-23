@@ -1,13 +1,14 @@
 <!--NewBookの部分テンプレート-->
+<div class='col-md-3'>
+  <h2 class='mt-3'>New book</h2>
+    <%= form_with model:book, local:true do |f| %>
 
-<h2>New book</h2>
-  <%= form_with model:book, local:true do |f| %>
+      <h4>title</h4>
+        <%= f.text_field :title %>
 
-    <h4>title</h4>
-      <%= f.text_field :title %>
+      <h4>Opinion</h4>
+        <%= f.text_field :body %>
 
-    <h4>Opinion</h4>
-      <%= f.text_field :body %>
-
-    <%= f.submit 'Create Book' %>
-  <% end %>
+      <%= f.submit 'Create Book', class: 'btn btn-success' %>
+    <% end %>
+</div>
