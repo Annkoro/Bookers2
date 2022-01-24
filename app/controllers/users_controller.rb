@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:update, :edit]
 
 
    def index
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params)
+    @user = User.find(params[:id])
 
     if @user.update(user_params)
       redirect_to user_path(@user.id), notice: 'You have updated user successfully.'
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 
   def correct_user
     @user = User.find(params[:id])
-    if current_user != @user　#ユーザーとそのidに紐付けられているユーザーが等しくなければ
+    unless @user == current_user #ユーザーとそのidに紐付けられているユーザーが等しくなければ
       redirect_to user_path(current_user)
     end
   end

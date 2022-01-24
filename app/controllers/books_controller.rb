@@ -8,9 +8,9 @@ class BooksController < ApplicationController
     @book.user_id = current_user.id
 
     if @book.save
-      redirect_to books_path(@book), notice: 'You have created book succesfully. '
+      redirect_to book_path(@book.id), notice: 'You have created book succesfully. '
     else
-      @books = Book.all
+      @new_books = Book.all
       @user = User.find(current_user.id)
       render 'index', notice: 'errors prohibited this obj from being saved:'
     end
@@ -19,13 +19,13 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
-    @book = Book.new
+    @new_book = Book.new
     @user = User.find(current_user.id)
   end
 
   def show
     @book = Book.find(params[:id])
-    @book.new = Book.new
+    @new_book = Book.new
     @user = @book.user
   end
 

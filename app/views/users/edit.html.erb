@@ -1,18 +1,25 @@
 <!--ユーザーのプロフィール編集画面-->
 
-<h2>User info</h2>
-<%= notice %>
+<dev class='container'>
+  <div class='row'>
+    <div class='col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto'>
 
-<%= form_with model:@user, local:true do |f| %>
-  <h4>Name</h4>
-  <%= f.text_field :name %>
+      <h2>User info</h2>
+      <%= notice %>
 
-  <h4>Image</h4>
-  <%= f.attachment_field :profile_image %>
+      <%= form_with model:@user, local:true do |f| %>
+        <h4>Name</h4>
+        <%= f.text_field :name %>
 
-  <h4>Introduction</h4>
-  <%= f.text_area :introduction %>
+        <h4>Image</h4>
+        <%= f.file_field :profile_image %>
 
-  <%= f.submit 'Update User' %>
+        <h4>Introduction</h4>
+        <%= f.text_area :introduction %>
 
-<% end %>
+        <%= f.submit 'Update User' %>
+
+      <% end %>
+    </div>
+  </div>
+</div>
