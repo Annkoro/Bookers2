@@ -6,13 +6,13 @@ class UsersController < ApplicationController
 
    def index
     @users = User.all
-    @book = Book.new
+    @new_book = Book.new
     @user = User.find(current_user.id)
    end
 
   def show
     @user = User.find(params[:id])
-    @book = Book.new
+    @new_book = Book.new
     @books = @user.books #@userがユーザー情報で、それにbooksモデルの本を紐付けている
   end
 

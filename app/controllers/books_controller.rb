@@ -8,18 +8,18 @@ class BooksController < ApplicationController
     @book.user_id = current_user.id
 
     if @book.save
-      redirect_to book_path(@book.id), notice: 'You have created book succesfully. '
+      redirect_to book_path(@book.id), notice: 'You have created book successfully. '
     else
-      @new_books = Book.all
+      @books = Book.all
       @user = User.find(current_user.id)
-      render 'index', notice: 'errors prohibited this obj from being saved:'
+      render :index, notice: 'errors prohibited this obj from being saved:'
     end
 
   end
 
   def index
     @books = Book.all
-    @new_book = Book.new
+    @book = Book.new
     @user = User.find(current_user.id)
   end
 
@@ -40,10 +40,10 @@ class BooksController < ApplicationController
 
 
   def update
-    @book = Book.fink(params[:id])
+    @book = Book.find(params[:id])
     @book.user_id = current_user.id
     if @book.update(book_params)
-      redirect_to book_path(@book), notice: 'You have updated book succesfully.'
+      redirect_to book_path(@book), notice: 'You have updated book successfully.'
     else
       render 'edit'
     end
